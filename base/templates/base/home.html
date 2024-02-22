@@ -1,0 +1,44 @@
+
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+
+<h1>home</h1>
+
+
+<div class="home-main-div">
+    <div class="add-info">
+        <div>
+            <a href="{% url 'addinfo' %}">add profile details </a>
+        </div>
+     <br>
+        <div>
+            <a href="{% url 'upload' %}">  upload post </a>
+        </div>
+    </div>
+
+
+
+    <div class="upload">
+        {% include 'base/post.html' %}
+    </div>
+
+
+    <div class="all-users">
+        <h1>all users</h1>
+        <div>
+            {% for profile  in profiles %}
+              <h3>
+                <a href="{% url 'profile' profile.user %}"> @{{profile.user}}</a>
+              </h3>
+              <hr>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

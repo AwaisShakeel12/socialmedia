@@ -1,0 +1,63 @@
+.body{
+    background-color: gray;
+}
+
+.home-main-div{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+.upload-box{
+    border: 1px solid black;
+    height: fit-content;
+    width: fit-content;
+    border: 3px solid black;
+}
+.username{
+    border: 1px solid gray;
+    background-color: white;
+    color: white;
+
+}
+
+.upload{
+    border: 1px;
+}
+.caption{
+    border: 1px solid gray;
+    background-color: white;
+}
+.real-caption{
+  font-size: 20px;
+  color: blueviolet;
+}
+.like{
+    border: 1px solid black;
+    height: 30px;
+    display: flex;
+    align-content: center;
+    /* justify-content: center; */
+
+
+}
+/* .like-btn{
+    text-align: center;
+    border: 3px solid red;
+    height: 20px;
+    width: 50px;
+    background-color: lightpink;
+    border-radius: 5px;
+    
+} */
+.save{
+  
+    margin-left: 50px;
+}
+
+
+.comment{
+    margin-left: 20px;
+}
+.home-main-div{
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr;
+}

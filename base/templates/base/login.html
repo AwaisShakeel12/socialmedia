@@ -1,0 +1,67 @@
+
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<style>
+    .login-main-div{
+        background-color: blueviolet;
+        height: 300px;
+        width: 500px;
+        margin-top: 50px;
+        margin-left: 50vh;
+        border-radius: 15px;
+        box-shadow: 2px 5px 3px blueviolet;
+        align-items: center;
+    }
+    .form{
+         padding-top: 100px;
+         padding-left: 150px;
+    }
+    label{
+        border: 2px solid white;
+        background-color: white;
+        border-radius: 5px;
+
+    }
+</style>
+
+
+{% for message in messages %}
+
+
+{{message}}
+{% endfor %}
+{{message}}
+<h1>login</h1>
+
+<div class="login-main-div">
+    <div class="form">
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <label class="username" for="">username:
+                <input type="text" name="username" placeholder="enter username">
+            </label>
+            
+            <br><br>
+
+            <label class="password" for="">password:
+
+                <input type="password" name="password" placeholder="enter password">
+            </label>
+            <br><br>
+
+
+          
+            <input class="btn" type="submit" value="submit" />
+            
+
+
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

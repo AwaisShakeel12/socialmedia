@@ -1,0 +1,43 @@
+
+
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<h1>register</h1>
+
+
+<div class="register-main-div">
+    <div>
+        {% for message in messages %}
+            <p>{{message}}</p>
+        {% endfor %}
+
+        <form action="" method="post">
+            {% csrf_token %}
+
+
+            <label for="">username:</label>
+            <input type="text" name="username" placeholder="enter username">
+            <br><br>
+
+            <label for="">password:</label>
+            <input type="password" name="password" placeholder="enter password">
+            <br><br>
+
+            <label for="">re-enter password:</label>
+            <input type="password" name="password1" placeholder="reset password">
+            <br><br>
+
+          
+            <input type="submit" value="submit" />
+            
+
+
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

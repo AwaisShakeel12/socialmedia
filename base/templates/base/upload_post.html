@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<div class="upload-main-div">
+    <div>
+        <form action="upload" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <input type="file" name="image_upload" id="">
+            <br>
+            <br>
+            <textarea name="caption" id="" cols="30" rows="10"></textarea>
+            <br><br>
+            <input type="submit" />
+        </form>
+    </div>
+</div>
+
+{% endblock %}

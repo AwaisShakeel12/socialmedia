@@ -1,0 +1,83 @@
+{% load static %}
+<link rel="stylesheet" href="{% static  'css/style.css' %}">
+
+<style>
+    .username{
+        background-color: blueviolet;
+    }
+    .comment{
+        margin-left: 120px;
+    }
+    .download{
+        margin-left: 150px;
+    }
+    .post{
+        background-color: white;
+    }
+
+</style>
+<div class="upload">
+
+    <div class="main-post" >
+        {% for post in posts reversed %}
+            <div class="upload-box" >
+              <a href="href={% url 'openpost' post.id %}">
+                <div class="username">
+                    <a href="{% url 'profile' post.user %}">@{{post.user}}</a>
+                </div>
+                <div class="post">
+                   <a href="{% url 'openpost' post.id %}">open post</a>
+                </div>
+                <div class="image-box-upload">
+                    <a href="{{post.image.url}}">
+                        <img height="400" width="500" src="{{post.image.url}}" alt="">
+                    </a>
+                </div>
+
+                <div class="caption">
+                    <p class="real-caption">caption: <b> {{post.caption}}</b></p>
+                </div>
+
+                <div class="like">
+                    <a href="likepost?post_id={{post.id}}" class="">
+                        <div>
+                            <img height="30" width="30" src="{% static 'images/like.png' %}" alt="">
+                        </div>
+                    </a>
+                
+                    {% if post.no_of_likes == 0 %}
+                    <strong>no like</strong>
+                    {% elif post.no_of_likes == 1 %}  
+                    <h3>like: {{post.no_of_likes}}</h3>
+                    {% else %}
+                    <h3>like: {{post.no_of_likes}}</h3>   
+
+                    {% endif %}
+                    
+                    <div class="comment" >
+                        <a  href="{% url 'openpost' post.id %}">
+                            <div>
+                               <img style="margin-top: -5px;" height="35" width="45" src="{% static 'images/comment.png' %}" alt="">
+                            </div>
+                        </a> 
+                    </div>
+
+                
+                    <div class="download">
+                        <a href="{{post.image.url}}" download="">
+                            <div>
+                                <img style="margin-top: -5px;" height="40" width="40" src="{% static 'images/download.png' %}" alt="">
+                            </div>
+                        </a>
+                    </div>
+
+              </a>
+
+            </div>
+            
+
+            </div>
+            <br><br>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .navbar{
+          height: 90px;
+          width: 100%;
+          background-color: blueviolet;  
+          border: 3px solid white;
+          box-shadow: 2px 2px 2px white;
+        }
+        .moving{
+            
+            color: white;
+        }
+        .namebox{
+            color: white;
+        }
+        .btn-log{
+            border: 2px solid white;
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+        }
+
+    
+    </style>
+</head>
+<body>
+
+
+    <div class="navbar">
+        
+        <nav class="nav">
+               
+            <div class="moving">
+                <h2>  <marquee behavior="" direction="">Awais Shakeel</marquee></h2> 
+            </div>
+            <hr>
+           
+            <p class="namebox">login as : {{request.user.username}}|  <a style="color: white;" href="{% url 'home'%}">home</a> </p> 
+            <div style="color: white;" class="detail">
+                {% if request.user.is_authenticated %}
+                <a class="btn-log"  href="{% url 'logout' %}">logout</a>
+                {% else %}    
+                <a class="btn-log"   href="{% url 'login' %}">login</a>
+                {% endif %}
+            </div>         
+           
+           
+        </nav>
+         
+        
+    </div>
+    
+</body>
+</html>

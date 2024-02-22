@@ -1,0 +1,51 @@
+
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    .img-box{
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+    }
+</style>
+
+<h1>add info</h1>
+
+
+
+<div class="add-info-main-div">
+    <div>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-box">
+                <div class="img-box">
+                    <img height="100" width="100" src="{{user_profile.profileimage.url}}" alt="">
+                </div>
+
+                <input type="file" name="image">
+                <br>
+                <br>
+
+                <textarea name="bio" id="" placeholder="enter bio" cols="30" rows="10"></textarea>
+
+                <br><br>
+
+                <input type="text" placeholder="location" name="location" id="">
+
+                <br><br>
+                <input type="submit" name="" id="" value="submit">
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

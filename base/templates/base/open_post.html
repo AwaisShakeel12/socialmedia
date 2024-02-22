@@ -1,0 +1,114 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<style>
+    .main-container{
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+    }
+
+ 
+
+    .chat-receiver, .chat-sender{
+
+        width: 200px;
+        height: auto;
+        background-color: blue;
+        color:  white;
+        margin-left: auto;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        border-radius: 15px;
+
+    }
+    .chat-sender{
+        float: left;
+        background-color: blueviolet;
+        color: white;
+    }
+
+</style>
+
+<h1>open post</h1>
+
+<hr>
+
+    <div class="main-container">
+
+        <div class="post">
+            <div class="user">
+                <h1>@{{community.user}}</h1>
+            </div>
+         
+            <div class="likes">
+            </div>
+                <div>
+                {% if community.no_of_comments == 0 %}
+                    <h4>be first to comment </h4>
+                {% elif community.no_of_comments == 1 %} 
+
+                {% else %}
+                    <h4>no of commnets : {{commnet_count}}</h4>
+                {% endif %}
+                </div>
+                 <hr>
+                <div class="comment-write">
+                    <form action="" method="post">
+                       {% csrf_token %}
+        
+                       <label for="">write comment</label>
+                       <input type="text" name="body" placeholder="enter comment..">
+                    </form>
+                </div>
+                <br>
+                   
+            
+
+        </div>
+
+        <div class="comment">
+            <h1>Comments </h1>
+            <hr>
+            <div> 
+                {% for comment in post_comment %}
+                     
+                       <div class="">
+                           
+                           <p>@{{comment.user}}</p> 
+                           <strong>
+                               {{comment.body}}
+                        </strong>
+                        <hr>
+                       </div>
+
+                       {% comment %}
+                       <div class="chat-receiver">
+                        
+                        <strong> <p>@{{comment.user}}</p>  {{comment.body}}</strong>
+                        <hr>
+                       </div>
+                       
+
+                       
+                       <div class="chat-sender">
+                   
+                       </div>
+                      {% endcomment %}
+
+                     
+                {% endfor %}
+            </div>
+
+            
+        </div>
+
+
+
+       
+     
+    </div>
+
+{% endblock %}

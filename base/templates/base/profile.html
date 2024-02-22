@@ -1,0 +1,95 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+
+<style>
+    
+.post-box{
+    border: 1px solid black;
+    height : fit-content;
+    width: fit-content;   
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+
+.pic{
+    margin-top: 10px;
+    margin-left: 10px;
+    display: grid;
+}
+
+.main-post-container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+</style>
+
+
+<br>
+<div class="profile-main-div">
+
+
+
+<!-- -----------------------profile header start -------------->
+    <div class="profile-header">
+        <div class="profile-img-box">
+            <img style="border-radius: 50%;" height="150", width="150" src="{{user_profile.profileimage.url}}" alt="">
+        </div>
+        <div class="details">
+            <h2> <b>user:</b>  {{user_profile.user}}</h2>
+            <b>bio :{{user_profile.bio}}|  location :{{user_profile.location}} </b>        
+             <a href="{% url 'message' user_profile.user %}">chat</a>
+             
+        </div>
+
+
+        <div class="follow-box">
+          <div>
+            <form action="/follow" method="post">
+                {% csrf_token %}
+                <input type="hidden" value="{{user.username}}"name="follower" id=""  />
+                <input type="hidden" value="{{user_object.username}}" name="user" id="" />
+                
+                <a data-ripple="">
+                    <button type="submit">{{button_text}}</button>
+                </a>
+            </form>
+          </div>
+        </div>
+
+    </div>
+
+<!-- -----------------------profile header end -------------->
+
+    <div class="main-post-container">
+
+                <div class="post-box">
+                    
+                    <div class="post">
+                       
+                        <div class="pic">
+                            {% for post in user_post %}
+                            <div>
+                                <img height="100" width="100" src="{{post.image.url}}" alt="">    
+                                
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+    </div>
+
+</div>
+
+{% endblock %}
+

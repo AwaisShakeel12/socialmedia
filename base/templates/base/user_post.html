@@ -1,0 +1,44 @@
+
+<div class="upload">
+
+    <div class="">
+        {% for post in user_post reversed %}
+            <div class="upload-box">
+                <div class="username">
+                    <a href="{% url 'profile' post.user %}">@{{post.user}}</a>
+                </div>
+            <div class="image-box-upload">
+                <a href="{{post.image.url}}">
+                    <img height="400" width="500" src="{{post.image.url}}" alt="">
+                </a>
+            </div>
+
+            <div class="caption">
+                <p class="real-caption">caption: <b> {{post.caption}}</b></p>
+            </div>
+
+            <div class="like">
+                <a href="likepost?post_id={{post.id}}" class="like-btn">like</a>
+              
+                {% if post.no_of_likes == 0 %}
+                  <p>no like</p>
+                {% elif post.no_of_likes == 1 %}  
+                   <p>{{post.no_of_likes}}</p>
+                {% else %}
+                   <p>{{post.no_of_likes}}</p>   
+
+                {% endif %}
+
+
+              
+                <div class="save">
+                <a href="{{post.image.url}}" download="">download</a>
+                </div>
+            </div>
+            
+
+            </div>
+            <br><br>
+        {% endfor %}
+    </div>
+</div>

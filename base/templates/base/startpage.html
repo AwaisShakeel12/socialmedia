@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<style>
+    body{
+
+    }
+    .startpage-main-div{
+        border: 2px solid blueviolet;
+        background-color: blueviolet;
+        margin-top: 50px;
+        height: 300px;
+        width: 550px;
+        margin-left: 55vh;
+        color: white;
+        border-radius: 15px;
+        box-shadow: 2px 5px 3px blueviolet;
+    }
+    .items{
+        color: white;
+        margin-top: 20px;
+        margin-left: 70px;
+    }
+</style>
+
+<div class="startpage-main-div">
+
+    <div class="items">
+        <h1>Welcome to Awais Shakeel Web</h1>
+        <h1 class="items">
+            <a class="items" id="register" href="{% url 'register' %}">Signup</a>
+             <br>
+             <br>
+             <hr style="margin-left: -140px;">
+             <br>
+            <a class="items" id="login" href="{% url 'login' %}">Login</a>
+        </h1>
+    </div>
+</div>
+
+{% endblock %}
+

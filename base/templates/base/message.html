@@ -1,0 +1,46 @@
+
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<h1>message page</h1>
+
+
+<h1>user : {{profile.user}}</h1>
+
+
+<hr>
+<br>
+<div class="message-box">
+    <h1>message </h1>
+    <hr>
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="body" placeholder="enter your message">
+        </form>
+    </div>
+</div>
+
+
+<div>
+    {% for message in user_message %}
+    {% if request.user == message.reciver or  message.sender %}
+    
+          
+      
+        <p>@{{message.sender}}</p>
+        <p>{{message.body}}</p>
+        <hr>
+        
+        
+      {% endif %}
+      
+      {% endfor %}
+
+
+
+</div>
+
+{% endblock %}
